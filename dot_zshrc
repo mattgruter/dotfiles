@@ -108,6 +108,7 @@ alias lg="lazygit"
 
 # bitwarden
 alias bitwarden="bw"
+alias bwu='export BW_SESSION=$( bw unlock --raw )'
 
 # homebrew
 export PATH=$(brew --prefix)/bin:$PATH
