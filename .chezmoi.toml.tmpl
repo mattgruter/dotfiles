@@ -1,8 +1,10 @@
-{{ $name := promptString "Name used for git" -}}
-{{ $email_personal := promptString "Personal E-Mail address used for git" -}}
-{{ $email_spotify := promptString "Spotify E-Mail address used for git" -}}
+{{ $name := promptString "First and Lastname (used for git)" -}}
+{{ $email_personal := promptString "Personal email address (used for git)" -}}
+{{ $email_spotify := promptString "Spotify email address (used for git)" -}}
+{{ $email_bitwarden := promptString "Bitwarden email" -}}
 
 [data]
     name = {{ $name | quote }}
     email.personal = {{ $email_personal | quote }}
     email.spotify = {{ $email_spotify | quote }}
+    bitwarden.email = {{ $email_bitwarden | quote }}
