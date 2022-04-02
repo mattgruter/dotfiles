@@ -100,6 +100,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# kubernetes
+alias k="kubectl"
+
+# lazygit
+alias lg="lazygit"
+
+# bitwarden
+alias bitwarden="bw"
+
 # homebrew
 export PATH=$(brew --prefix)/bin:$PATH
 
