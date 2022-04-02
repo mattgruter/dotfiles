@@ -9,16 +9,11 @@
 	default = simple
 [alias]
 	st      = status
-	type    = cat-file -t
-	dump    = cat-file -p
-	hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	diffc   = diff --cached
 	ci      = commit
 	br      = branch
 	co      = checkout
 	lg      = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-	# saves all updates as Working in Progress. USE WITH CARE!
-	wip     = !git add -u && git commit -m "WIP"
 	# Push the current branch to the remote "origin", and set it to track
 	# the upstream branch
 	publish = "!git push -u origin $(git branch-name)"
