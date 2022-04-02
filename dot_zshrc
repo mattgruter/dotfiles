@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # kubernetes
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-spotify
 alias k="kubectl"
 
 # lazygit
