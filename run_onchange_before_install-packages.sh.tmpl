@@ -3,6 +3,12 @@
 
 set -eufo pipefail
 
+{{ $taps := list
+    "homebrew/bundle"
+    "homebrew/cask"
+    "homebrew/cask-drivers"
+    "homebrew/cask-fonts"
+    "homebrew/core" -}}
 {{ $brews := list
     "argocd"
     "bat"
@@ -89,12 +95,15 @@ set -eufo pipefail
     "visual-studio-code"
     "vlc"
     "whatsapp"
-    "homebrew/cask-drivers/yubico-authenticator"
-    "homebrew/cask-drivers/yubico-yubikey-manager"
+    "yubico-authenticator"
+    "yubico-yubikey-manager"
     "zoom" -}}
 
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($taps | sortAlpha | uniq) -}}
+tap "{{ . }}"
+{{ end -}}
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
 {{ end -}}
