@@ -1,7 +1,7 @@
 README.md
 
 # ignore linux scripts on macos
-{{- if ne .chezmoi.os "darwin" }}
+{{- if ne .chezmoi.os "linux" }}
 bin/steam-ldpreload
 bin/wifi-sharing
 {{- end }}
