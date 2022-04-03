@@ -1,0 +1,11 @@
+#!/bin/bash
+
+repo=sftp:backup.lentulus.grueter.name:backup/pictures.restic
+
+eval $( ssh-agent )
+ssh-add
+
+restic --repo $repo backup \
+  --exclude ".DS_Store" \
+  --tag pictures \
+  $HOME/Pictures/

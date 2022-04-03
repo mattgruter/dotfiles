@@ -1,0 +1,30 @@
+#!/bin/bash
+
+repos="sftp:backup.huddinge.grueter.name:backup/recovery.restic sftp:backup.lentulus.grueter.name:backup/recovery.restic"
+
+function usage() {
+    echo "usage: backup-recovery [tag] [file]"
+    echo "  example: backup-recovery github 20200213-github.com-matthias.txt"
+    echo "  restore with: restic --repo [repo] --target [target_dir] restore [snapshotID]"
+    echo "    or by tag: restic --repo [repo] --target [target_dir] --tag [tag] restore latest"
+}
+
+if [[ $# -eq 2 ]]; then
+    read -s -p "enter password for repository:" RESTIC_PASSWORD
+    export RESTIC_PASSWORD
+    echo
+    for repo in $repos; do
+        echo "Backing up to ${repo}:"
+        tag="$1"
+        file="$2"
+        restic backup \
+            --repo ${repo} \
+            --tag recovery \
+            --tag ${tag} \
+            ${file}
+        echo
+     done
+else
+    usage && exit -1
+fi
+

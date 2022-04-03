@@ -1,0 +1,35 @@
+#!/bin/bash
+
+repo=sftp:backup.lentulus.grueter.name:backup/matthias.restic
+
+restic backup \
+  --repo $repo \
+  --exclude "VirtualBox VMs"/ \
+  --exclude Downloads/ \
+  --exclude FiraxisLive/ \
+  --exclude Music/ \
+  --exclude Pictures/ \
+  --exclude Videos/ \
+  --exclude snap/ \
+  --exclude SoftMaker/ \
+  --exclude Steam/ \
+  --exclude virt/ \
+  --exclude src/spotify \
+  --exclude src/oss \
+  --exclude src/gocode \
+  --exclude .cache \
+  --exclude .gradle \
+  --exclude .ivy2 \
+  --exclude .m2 \
+  --exclude .sbt \
+  --exclude .npm \
+  --exclude .sdkman \
+  --exclude .minikube \
+  --exclude .local/share/Trash \
+  --exclude .local/share/Steam \
+  --exclude .config/google-chrome \
+  --exclude .config/chromium \
+  --exclude .PlayOnLinux/wineprefix \
+  --tag home \
+  --tag matthias \
+  $HOME
