@@ -1,0 +1,128 @@
+#!/bin/bash
+#
+# Syncronize & check files in ~/Pictures to another path using rsync & cfv.
+
+LOCAL_DIR="$HOME/Pictures/"
+REMOTE_DIR=/run/media/matthias/mattgruter/Pictures/
+
+# Return top-level directories in Pictures path (e.g. Albums, etc.)
+# as a newline seperated list.
+function list_pic_dirs() {
+    for dir in $( ls -d "${LOCAL_DIR}"/*/ ); do
+        dirname="$( basename $dir )"
+        if [[ $dirname != *lost+found* ]]; then
+            echo $dirname
+        fi
+    done
+}
+
+# Check that $LOCAL_DIR is set to ~/Pictures and is "~/Pictures-like",
+# ask for confirmation otherwise.
+function validate_local_dir() {
+    if [ ! "$LOCAL_DIR" -ef ~/Pictures ]; then
+        echo "Warning: Your LOCAL_DIR is set to $LOCAL_DIR instead of ~/Pictures."
+        read -p "Do you want to continue anyway? [y|N] " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo "Aborted"; exit -1
+        fi
+    fi
+
+    # sanity check that $LOCAL_DIR really is a ~/Pictures-like directory
+    if [ ! -d "${LOCAL_DIR}/Albums" ] || [ ! -d "${LOCAL_DIR}/Export" ]; then
+        echo "Error: Your LOCAL_DIR does not look like a 'Pictures' directory"
+        exit -1
+    fi
+}
+
+# Check that $REMOTE_DIR exists.
+function validate_remote_dir() {
+    if [ ! -d "${REMOTE_DIR}" ]; then
+            echo "Error: Directory ${REMOTE_DIR} not found"
+            exit -1
+    fi
+}
+
+# Sync pictures to remote end, delete files that have been removed locally
+# (i.e. rejected pics that have been deleted), but don't delete album, collection or
+# other directories that are missing locally (i.e. typically the remote end is a backup
+# drive that holds more directories, those shouldn't be deleted when syncing)
+function sync() {
+    validate_remote_dir
+    for pic_dir in $( list_pic_dirs ); do
+        dir="$( basename $pic_dir )"
+        echo "Syncing ${dir} to $REMOTE_DIR"
+        rsync --archive \
+            --partial \
+            --delete \
+            --info=del,progress2\
+            --human-readable \
+            "${LOCAL_DIR}/${dir}/"* "${REMOTE_DIR}/${dir}"
+    done
+}
+
+# Check files against all SHA1 checksums recursively (even search for misnamed files).
+# Arguemnt:
+#   Root directory to search (e.g. ~/Pictures)
+function check() {
+    dir="$1"
+    saveifs=$IFS
+    IFS=$(echo -en "\n\b")
+    echo "Checking $dir"
+    cd "$dir"
+    chk_files=$( find . -name sha1sums.txt )
+    for chk_file in $chk_files; do
+        chk_dir=$( dirname "$chk_file" )/
+        cfv -s -VV -p "$chk_dir" --showpaths=y-a -f sha1sums.txt
+    done
+    IFS=$saveifs
+}
+
+# Check for missing files recursively as listed in checksum files.
+# Arguemnt:
+#   Root directory to search (e.g. ~/Pictures)
+function missing() {
+    dir="$1"
+    saveifs=$IFS
+    IFS=$(echo -en "\n\b")
+    echo "Checking for missing $dir"
+    cd "$dir"
+    chk_files=$( find . -name sha1sums.txt )
+    for chk_file in $chk_files; do
+        chk_dir=$( dirname "$chk_file" )/
+        cfv -m -VV -p "$chk_dir" --showpaths=y-a -f sha1sums.txt
+    done
+    IFS=$saveifs
+}
+
+function usage() {
+    echo "usage: pictures check|check-all|missing|missing-all|sync"
+}
+
+function main() {
+    validate_local_dir
+    case "$1" in
+        check)
+            check "$LOCAL_DIR"
+            ;;
+        check-all)
+            check "$LOCAL_DIR"
+            check "$REMOTE_DIR"
+            ;;
+        sync)
+            sync
+            ;;
+        missing)
+            missing "$LOCAL_DIR"
+            ;;
+        missing-all)
+            missing "$LOCAL_DIR"
+            missing "$REMOTE_DIR"
+            ;;
+        *)
+            usage && exit -1
+            ;;
+    esac
+}
+
+main "$@"
