@@ -1,1 +1,6 @@
 README.md
+
+# ignore linux scripts on macos
+{{- if ne .chezmoi.os "darwin" }}
+bin/wifi-sharing
+{{- end }}

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PASSWORD=$1
+WLAN_IF_INTERNAL=wlp0s20f0u1
+WLAN_IF_WITH_INTERNET=wlp2s0
+INTERNAL_SSID=matthias
+
+# Share a Wifi connection with multiple devices
+# First connect laptop to the Wifi network with internet access,
+# then run
+#    ./wifi-sharing mypass
+# This will create a WiFi "matthias" that other devices can
+# connect to with the passwod 'mypass'
+sudo create_ap $WLAN_IF_INTERNAL $WLAN_IF_WITH_INTERNET $INTERNAL_SSID $PASSOWRD
