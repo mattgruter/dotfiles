@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# fix for steam webview not showing anything
+# https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Steam_webview/game_browser_not_working_in_native_runtime
+
+STEAM_RUNTIME=1 LD_PRELOAD="/usr/lib/libgio-2.0.so.0 /usr/lib/libglib-2.0.so.0 /usr/lib/libfreetype.so" /usr/bin/steam %U
