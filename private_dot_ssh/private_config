@@ -1,0 +1,9 @@
+Include config-private
+Include config-spotify
+
+# global config
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+
+PermitLocalCommand yes
