@@ -40,3 +40,10 @@
 	required = true
 [init]
 	defaultBranch = main
+[gc]
+	autoDetach = false
+	pruneExpire = now
+[credential]
+	helper = cache --timeout 3600
+[safe]
+	directory = *
