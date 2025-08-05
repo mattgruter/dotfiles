@@ -140,4 +140,15 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Created by `pipx` on 2025-05-23 07:40:59
+export PATH="$PATH:/Users/matthiasg/.local/bin"
 export PATH=/opt/spotify-devex/bin:$PATH
+
+# Claude Code
+# see https://docs.google.com/document/d/1kVzqnf3MrTfnQAbZKHnlAjb867_FrANrBlpJRHQeT68/edit?tab=t.0
+export CLAUDE_CODE_USE_VERTEX=1 
+export ANTHROPIC_SMALL_FAST_MODEL='claude-3-5-haiku@20241022'
+export CLOUD_ML_REGION='europe-west1'
+export VERTEX_REGION_CLAUDE_4_0_OPUS='europe-west4'
+export ANTHROPIC_VERTEX_PROJECT_ID=spotify-claude-code-trial 
