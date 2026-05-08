@@ -5,7 +5,8 @@ repos="sftp:backup.huddinge.grueter.name:backup/recovery.restic sftp:backup.lent
 function usage() {
     echo "usage: backup-recovery [tag] [file]"
     echo "  example: backup-recovery github 20200213-github.com-matthias.txt"
-    echo "  restore with: restic --repo [repo] --target [target_dir] restore [snapshotID]"
+    echo "  - list recovery files with: restic --repo [repo] snapshots"
+    echo "  - restore with: restic --repo [repo] --target [target_dir] restore [snapshotID]"
     echo "    or by tag: restic --repo [repo] --target [target_dir] --tag [tag] restore latest"
 }
 
