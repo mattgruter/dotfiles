@@ -1,0 +1,30 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+brew tap spotify/sptaps git@ghe.spotify.net:shared/homebrew-spotify.git
+
+{{ $brews := list
+    "bazelisk"
+    "gh"
+    "graphviz"
+    "pyenv"
+    "pyenv-virtualenv"
+    "python"
+    "sptcli" -}}
+{{ $casks := list
+    "1password"
+    "figma"
+    "obsidian" -}}
+
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+{{ end -}}

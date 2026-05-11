@@ -1,0 +1,29 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list
+    "bitwarden-cli"
+    "chezmoi"
+    "curl"
+    "gh"
+    "git"
+    "gnupg"
+    "watch"
+    "wget"
+    "xz" -}}
+{{ $casks := list
+    "1password"
+    "iterm2" -}}
+
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+{{ end -}}

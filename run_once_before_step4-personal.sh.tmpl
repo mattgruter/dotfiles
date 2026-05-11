@@ -1,0 +1,68 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $taps := list
+    "asheshgoplani/tap" -}}
+{{ $brews := list
+    "agent-deck"
+    "ansible"
+    "cmctl"
+    "coredns"
+    "dcraw"
+    "esptool"
+    "esphome"
+    "erlang"
+    "exiftool"
+    "ffmpeg"
+    "immich-cli"
+    "immich-go"
+    "k9s"
+    "poetry"
+    "rclone"
+    "restic"
+    "ruby"
+    "socat"
+    "syncthing"
+    "wakeonlan" -}}
+{{ $casks := list
+    "balenaetcher"
+    "beardedspice"
+    "bruno"
+    "calibre"
+    "coconutbattery"
+    "db-browser-for-sqlite"
+    "discord"
+    "handbrake-app"
+    "inkscape"
+    "insync"
+    "latest"
+    "lunar"
+    "makemkv"
+    "mkvtoolnix-app"
+    "moonlight"
+    "mqttx"
+    "nvidia-geforce-now"
+    "nordvpn"
+    "obs"
+    "obsidian"
+    "signal"
+    "sweet-home3d"
+    "vlc"
+    "whatsapp"
+    "zen" -}}
+
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range ($taps | sortAlpha | uniq) -}}
+tap "{{ . }}"
+{{ end -}}
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+{{ end -}}
