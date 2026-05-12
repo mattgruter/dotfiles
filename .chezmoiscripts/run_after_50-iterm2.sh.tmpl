@@ -2,17 +2,14 @@
 #!/usr/bin/env bash
 
 # check if iterm2 config dir points to .config
-if current=$(defaults read com.googlecode.iterm2 PrefsCustomFolder 2>/dev/null); then
+prefdir=$(defaults read com.googlecode.iterm2 PrefsCustomFolder 2>/dev/null)
+if [[ ${prefdir} != "~/.config/iterm2" ]]; then
+    # set config directory
+    defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2"
+    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
-    if [[ ${current} != "~/.config/iterm2" ]]; then
-
-        # set config directory
-        defaults write com.googlecode.iterm2 PrefsCustomFolder -string ".config/iterm2"
-        defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-
-        notice "Set iTerm2 config dir: .config/iterm2"
-        exit 0
-    fi
+    print "Set iTerm2 config dir: ~/.config/iterm2"
+    exit 0
 fi
 
 {{- end }}
