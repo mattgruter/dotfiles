@@ -31,3 +31,23 @@ bwu
 ```
 
 to easily unlock the vault and set the session variable.
+
+### Tasks
+
+List files that are managed by chezmoi:
+
+```sh
+chezmoi managed
+```
+
+List files that neither managed nor ignored by chezmoi
+
+```sh
+chezmoi unmanaged
+```
+
+Pull latest updates and apply
+
+```sh
+chezmoi updat
+```
