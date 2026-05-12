@@ -51,3 +51,8 @@ Pull latest updates and apply
 ```sh
 chezmoi updat
 ```
+
+### Todo
+
+- Velja needs to be installed through the App Store and rules manuall imported from ~/.config/velja
+- TaskForge needs to be installed through the App Store
