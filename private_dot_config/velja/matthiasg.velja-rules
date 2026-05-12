@@ -1,0 +1,206 @@
+{
+  "version" : "3.1.1",
+  "rules" : [
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.figma.Desktop",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+        {
+          "id" : "2691914E-DBBA-4B9E-A0D8-D01CAD962428",
+          "fixture" : "https:\/\/figma.com",
+          "pattern" : "figma.com",
+          "kind" : "hostSuffix"
+        }
+      ],
+      "title" : "Open figma URLs in Figma app",
+      "transformTestURL" : "",
+      "id" : "25D79954-40A5-485F-8836-7E2659B3891B",
+      "sourceApps" : [
+
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.google.Chrome|Profile 1",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+
+      ],
+      "title" : "open links from 1Password with Spotify",
+      "transformTestURL" : "",
+      "id" : "72B52DBC-6214-49FA-BE12-1F4161E7CE86",
+      "sourceApps" : [
+        "com.1password.1password"
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.sindresorhus.Velja.defaultBrowserMarker",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+        {
+          "id" : "AE789D8D-67E2-4797-A7E6-A9A9D1420470",
+          "fixture" : "",
+          "pattern" : "linkedin.com",
+          "kind" : "hostSuffix"
+        }
+      ],
+      "title" : "Open LinkedIn in personal browser",
+      "transformTestURL" : "",
+      "id" : "55DCFA0B-EAC9-4F6F-898A-C157D0C5387C",
+      "sourceApps" : [
+
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.google.Chrome|Profile 1",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+
+      ],
+      "title" : "open auth request from GlobalProtect VPN with spotify",
+      "transformTestURL" : "",
+      "id" : "5483CA63-4314-42EA-8130-AF1ACB324D50",
+      "sourceApps" : [
+        "com.paloaltonetworks.GlobalProtect.client"
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.google.Chrome|Profile 1",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+        {
+          "id" : "DBF6EF79-07AB-4C27-B53F-CCFAC1943B61",
+          "fixture" : "",
+          "pattern" : "spotify.okta.com",
+          "kind" : "hostSuffix"
+        }
+      ],
+      "title" : "open Okta with Spotify",
+      "transformTestURL" : "",
+      "id" : "06EFA02B-F95B-48CD-B4DB-0826CDE4024F",
+      "sourceApps" : [
+
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.google.Chrome|Profile 1",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+        {
+          "id" : "677229A1-2D21-4748-BBED-FFE62D12DC33",
+          "fixture" : "",
+          "pattern" : "spotify.net",
+          "kind" : "hostSuffix"
+        }
+      ],
+      "title" : "open spotify.net URLs with spotify",
+      "transformTestURL" : "",
+      "id" : "002EFEB2-6FFD-4691-9EE5-F383F6406BF2",
+      "sourceApps" : [
+
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.google.Chrome|Profile 1",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+
+      ],
+      "title" : "open links from Slack with spotify by default",
+      "transformTestURL" : "",
+      "id" : "D4A24C50-4490-4A6F-8640-2B4DEBD2C1BA",
+      "sourceApps" : [
+        "com.tinyspeck.slackmacgap"
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.sindresorhus.Velja.defaultBrowserMarker",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+        {
+          "id" : "DF0EC52B-B9A3-4A1E-B463-873FC48DC450",
+          "fixture" : "",
+          "pattern" : "grueter.name",
+          "kind" : "hostSuffix"
+        }
+      ],
+      "title" : "open grueter.name URLs with Zen",
+      "transformTestURL" : "",
+      "id" : "52F75CE9-3936-4F96-AD4A-06956C34F386",
+      "sourceApps" : [
+
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    },
+    {
+      "onlyFromAirdrop" : false,
+      "browser" : "com.sindresorhus.Velja.defaultBrowserMarker",
+      "isEnabled" : true,
+      "runAfterBuiltinRules" : false,
+      "openInBackground" : false,
+      "isTransformScriptEnabled" : false,
+      "matchers" : [
+        {
+          "id" : "ADDDB8C2-EE73-4BBA-913F-87ABB882E503",
+          "fixture" : "",
+          "pattern" : "gruter.se",
+          "kind" : "hostSuffix"
+        }
+      ],
+      "title" : "open gruter.se URLs with Zen",
+      "transformTestURL" : "",
+      "id" : "B921EC24-8118-4E77-9CE1-045317BC4EC1",
+      "sourceApps" : [
+
+      ],
+      "transformScript" : "",
+      "forceNewWindow" : false
+    }
+  ]
+}
