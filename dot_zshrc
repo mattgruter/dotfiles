@@ -11,6 +11,9 @@ fi
 export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-spotify
 alias k="kubectl"
 
+# lsd
+alias ls="lsd"
+
 # lazygit
 alias lg="lazygit"
 
