@@ -6,8 +6,13 @@ Matthias Grüter's dotfiles, managed with `chezmoi`.
 
 This repository is managed by [chezmoi](https://chezmoi.io). To set up a new machine, run:
 
+
+### Bootstrapping a new machine
+
+Install chezmoi and bitwarden-cli before bootstrapping.
+
 ```sh
-chezmoi init mattgruter
+chezmoi init --apply --ssh mattgruter
 ```
 
 ### Secrets
