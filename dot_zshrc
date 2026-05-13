@@ -49,3 +49,12 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# cw shell integration — enables `cw nav` to cd directly
+cw() {
+  if [[ "$1" == "nav" ]]; then
+    local d
+    d=$(command cw _nav "$2") && cd "$d"
+  else
+    command cw "$@"
+  fi
+}
