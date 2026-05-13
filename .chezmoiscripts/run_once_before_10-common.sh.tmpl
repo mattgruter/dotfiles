@@ -4,7 +4,6 @@
 set -eufo pipefail
 
 {{ $taps := list
-    "hashicorp/tap"
     "johanhaleby/kubetail" -}}
 {{ $brews := list
     "arping"
@@ -42,7 +41,6 @@ set -eufo pipefail
     "sqlite"
     "starship"
     "syncthing"
-    "hashicorp/tap/terraform"
     "terraform-inventory"
     "tmux"
     "uv"
