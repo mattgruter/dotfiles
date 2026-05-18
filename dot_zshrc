@@ -49,6 +49,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Chirp
+export CHIRP_HOME=/Users/matthiasg/src/spotify/chirp
+
 # cw shell integration — enables `cw nav` to cd directly
 cw() {
   if [[ "$1" == "nav" ]]; then
