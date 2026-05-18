@@ -61,3 +61,4 @@ cw() {
     command cw "$@"
   fi
 }
+export PATH=/opt/spotify-devex/bin:$PATH
