@@ -4,7 +4,8 @@
 set -eufo pipefail
 
 {{ $taps := list
-    "johanhaleby/kubetail" -}}
+    "johanhaleby/kubetail"
+    "jundot/omlx" -}}
 {{ $brews := list
     "arping"
     "argocd"
@@ -23,6 +24,7 @@ set -eufo pipefail
     "htop"
     "jhead"
     "jq"
+    "jundot/omlx/omlx"
     "kubectl"
     "kubetail"
     "lazygit"
